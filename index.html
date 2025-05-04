@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Obomeng Kwahu - A Vibrant Community</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      /* CSS: Custom Styles */
+      .slide {
+        display: none;
+      }
+      .slide.active {
+        display: block;
+      }
+      #map {
+        height: 300px;
+        width: 100%;
+      }
+
+      .logo {
+        display: inline-block;
+      }
+
+      .logo img {
+        width: 50px;
+        height: auto;
+        border-radius: 50px;
+      }
+
+      .read-more-btn {
+        color: #15803d;
+        cursor: pointer;
+        text-decoration: underline;
+      }
+      .read-more-content {
+        display: none;
+        margin-top: 1rem;
+        color: #4b5563;
+      }
+      .read-more-content.show {
+        display: block;
+      }
+      .health-dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9fafb;
+        min-width: 250px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+        border-radius: 0.5rem;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+        margin-top: 0.5rem;
+      }
+
+      .health-dropdown:hover .health-dropdown-content {
+        display: block;
+      }
+
+      .health-dropdown-content a {
+        color: #374151;
+        padding: 0.75rem 1rem;
+        text-decoration: none;
+        display: block;
+        transition: color 0.3s ease;
+        border-radius: 0.25rem;
+      }
+
+      .health-dropdown-content a:hover {
+        background-color: #e5e7eb;
+        color: #15803d;
+      }
+
+      #clinic-video {
+        width: 100%;
+        height: auto;
+        max-height: 400px;
+        border-radius: 0.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .event-slide {
+        display: none;
+      }
+
+      .event-slide.active {
+        display: block;
+      }
+      /* Accordion container styles */
+      .accordion-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding: 2rem;
+        gap: 2rem;
+      }
+
+      .accordion-column {
+        flex: 1;
+        min-width: 300px;
+      }
+
+      /* Accordion button styles */
+      .accordion {
+        background-color: #f7fafc;
+        color: #334155;
+        cursor: pointer;
+        padding: 1rem;
+        width: 100%;
+        border: none;
+        text-align: left;
+        outline: none;
+        transition: background-color 0.3s ease, color 0.3s ease;
+        border-radius: 0.375rem;
+        margin-bottom: 0.5rem;
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1),
+          0 1px 2px -1px rgba(0, 0, 0, 0.1);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .accordion:hover,
+      .accordion.active {
+        background-color: #e0f2fe;
+        color: #1e40af;
+      }
+
+      .accordion-title {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+      }
+
+      /* Accordion content styles */
+      .accordion-content {
+        padding: 0 1rem;
+        background-color: white;
+        display: none;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+        border-radius: 0.375rem;
+        margin-bottom: 0.5rem;
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1),
+          0 1px 2px -1px rgba(0, 0, 0, 0.1);
+        margin-top: -0.5rem;
+      }
+
+      .accordion-content.show {
+        display: block;
+        max-height: 500px;
+      }
+
+      /* Accordion icon styles */
+      .accordion-icon {
+        font-size: 1.5rem;
+      }
+
+      .accordion-icon.rotate {
+        transform: rotate(45deg);
+      }
+
+      h2 {
+        padding-bottom: 2px;
+      }
+
+      /* Leader profile styles */
+      .leader-profile {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 1rem;
+      }
+      .leader-profile p {
+        margin: 1rem;
+      }
+
+      .leader-profile img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-100 font-inter">
+    <header
+      class="bg-green-600 text-white py-4 shadow-md sticky top-0 z-10 rounded-md"
+    >
+      <div class="container mx-auto px-4 flex justify-between items-center">
+        <a href="/" class="logo">
+          <img src="./chief_pics/ojtown_logo.jpg" alt="Obomeng Kwahu Logo" />
+        </a>
+        <nav class="hidden md:block">
+          <ul class="flex space-x-6">
+            <li>
+              <a
+                href="#about"
+                class="hover:text-green-200 transition duration-300"
+                >About Us</a
+              >
+            </li>
+            <li>
+              <a
+                href="#projects"
+                class="hover:text-green-200 transition duration-300"
+                >Community Projects</a
+              >
+            </li>
+            <li>
+              <a
+                href="#attractions"
+                class="hover:text-green-200 transition duration-300"
+                >Attractions</a
+              >
+            </li>
+            <li>
+              <a
+                href="#blog"
+                class="hover:text-green-200 transition duration-300"
+                >News</a
+              >
+            </li>
+            <li class="health-dropdown">
+              <a href="#" class="hover:text-green-200 transition duration-300"
+                >Healthcare</a
+              >
+              <div class="health-dropdown-content">
+                <a href="#healthcare-facilities">Health Facility</a>
+              </div>
+            </li>
+          </ul>
+        </nav>
+        <button
+          id="hamburger-btn"
+          class="md:hidden text-white focus:outline-none"
+          aria-label="Toggle Navigation"
+        >
+          <i class="fas fa-bars text-xl"></i>
+        </button>
+      </div>
+    </header>
+
+    <div
+      id="mobile-menu"
+      class="hidden fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-90 z-20"
+    >
+      <div class="bg-green-600 w-80 h-full absolute right-0 p-6">
+        <div class="flex justify-end mb-4">
+          <button
+            id="close-menu-btn"
+            class="text-white focus:outline-none"
+            aria-label="Close Menu"
+          >
+            <i class="fas fa-times text-xl"></i>
+          </button>
+        </div>
+        <nav class="block">
+          <ul class="space-y-4">
+            <li>
+              <a
+                href="#about"
+                class="block text-lg text-white hover:text-green-200 transition duration-300"
+                >About Us</a
+              >
+            </li>
+            <li>
+              <a
+                href="#projects"
+                class="block text-lg text-white hover:text-green-200 transition duration-300"
+                >Community Projects</a
+              >
+            </li>
+            <li>
+              <a
+                href="#attractions"
+                class="block text-lg text-white hover:text-green-200 transition duration-300"
+                >Attractions</a
+              >
+            </li>
+            <li>
+              <a
+                href="#blog"
+                class="block text-lg text-white hover:text-green-200 transition duration-300"
+                >Blog</a
+              >
+            </li>
+            <li>
+              <a
+                href="#healthcare-facilities"
+                class="block text-lg text-white hover:text-green-200 transition duration-300"
+                >Healthcare</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+
+    <section id="hero" class="bg-green-100 py-10">
+      <div class="container mx-auto px-4">
+        <div class="relative">
+          <div class="slide active">
+            <img
+              src="./chief_pics/back_photoobomeng.jpg"
+              alt="Obomeng entrance"
+              class="w-full rounded-md"
+            />
+            <div
+              class="absolute bottom-4 left-4 bg-black bg-opacity-50 text-white p-4 rounded-md"
+            >
+              <h2 class="text-xl font-semibold">
+                Obomeng Entrance from Nkawkaw
+              </h2>
+              <p>Obomeng Aduana Entrance to Kwahu townships</p>
+            </div>
+          </div>
+          <div class="slide">
+            <img
+              src="./imgs/clinic/Township_image.jpg"
+              alt="Obomeng Hills"
+              class="w-full rounded-md"
+            />
+            <div
+              class="absolute bottom-4 left-4 bg-black bg-opacity-50 text-white p-4 rounded-md"
+            >
+              <h2 class="text-xl font-semibold">Obomeng Township Beauty</h2>
+              <p>Aerial View of Obomeng Township .</p>
+            </div>
+          </div>
+          <div class="slide">
+            <img
+              src="./chief_pics/astroturf_inaugurate.jpg"
+              alt="Obomeng Town"
+              class="w-full rounded-md"
+            />
+            <div
+              class="absolute bottom-4 left-4 bg-black bg-opacity-50 text-white p-4 rounded-md"
+            >
+              <h2 class="text-xl font-semibold">Astro Turf Inauguration</h2>
+              <p>Obomenghene inaugurates a Football Turf</p>
+            </div>
+          </div>
+          <div class="slide">
+            <img
+              src="./chief_pics/Obeng_akrofi.jpg"
+              alt="astro turf"
+              class="w-full rounded-md"
+            />
+            <div
+              class="absolute bottom-4 left-4 bg-black bg-opacity-50 text-white p-4 rounded-md"
+            >
+              <h2 class="text-xl font-semibold">
+                The Burst Of Obeng Akrofi ||
+              </h2>
+              <p>Former Obomeng hene Statue at the Palace</p>
+            </div>
+          </div>
+          <div class="slide">
+            <img
+              src="./chief_pics/NanaEffah_Talkingtomedia.jpg"
+              alt="burst of obeng akrofi"
+              class="w-full rounded-md"
+            />
+            <div
+              class="absolute bottom-4 left-4 bg-black bg-opacity-50 text-white p-4 rounded-md"
+            >
+              <h2 class="text-xl font-semibold">
+                Obomeng Hene Addresses Media
+              </h2>
+              <p>Nana Effah Pinaman ||| Kwahu Easter Adom Speech</p>
+            </div>
+          </div>
+          <div class="slide">
+            <img
+              src="./chief_pics/community_durbar.jpg"
+              alt="community durbar"
+              class="w-full rounded-md"
+            />
+            <div
+              class="absolute bottom-4 left-4 bg-black bg-opacity-50 text-white p-4 rounded-md"
+            >
+              <h2 class="text-xl font-semibold">Obomeng Coomunity Durbar</h2>
+              <p>Nana Effah Pinaman ||| Community Durbar</p>
+            </div>
+          </div>
+          <div class="slide">
+            <img
+              src="./chief_pics/palace libation.jpg"
+              alt="Obomeng Libation"
+              class="w-full rounded-md"
+            />
+            <div
+              class="absolute bottom-4 left-4 bg-black bg-opacity-50 text-white p-4 rounded-md"
+            >
+              <h2 class="text-xl font-semibold">Palace Libation Pouring</h2>
+              <p>Aboafuo hene pours libation for visitors</p>
+            </div>
+          </div>
+          <div class="slide">
+            <img
+              src="./chief_pics/queenmother_group.jpg"
+              alt="queen mother dance"
+              class="w-full rounded-md"
+            />
+            <div
+              class="absolute bottom-4 left-4 bg-black bg-opacity-50 text-white p-4 rounded-md"
+            >
+              <h2 class="text-xl font-semibold">Obomeng Queen Mother</h2>
+              <p>Queen mother of Obomeng dancing with Entourage</p>
+            </div>
+          </div>
+          <a
+            class="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-70 text-gray-800 p-2 rounded-full cursor-pointer hover:bg-opacity-90"
+            onclick="plusSlides(-1)"
+            aria-label="Previous Slide"
+          >
+            <i class="fas fa-chevron-left"></i>
+          </a>
+          <a
+            class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-70 text-gray-800 p-2 rounded-full cursor-pointer hover:bg-opacity-90"
+            onclick="plusSlides(1)"
+            aria-label="Next Slide"
+          >
+            <i class="fas fa-chevron-right"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="bg-gray-100 py-10">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+          <div>
+            <h2 class="text-3xl font-semibold text-green-700 mb-4">About Us</h2>
+            <p class="text-gray-700 leading-relaxed">
+              Obomeng Kwahu is a peri-urban community with a rich and deeply
+              intertwined history rooted in the traditions of the Kwahu people.
+              As part of the Benkum division within the Kwahu Traditional
+              Council area and a proud member of the Aduana clan, Obomeng holds
+              a significant place in the cultural landscape of the region. The
+              community's heritage is marked by customs and practices passed
+              down through generations, shaping its identity and way of life.
+            </p>
+            <p class="text-gray-700 leading-relaxed mt-4">
+              Despite its strong adherence to tradition, Obomeng has also
+              embraced modern development, demonstrating a commitment to
+              progress in various spheres. This balance between tradition and
+              modernity is a defining characteristic of the community, evident
+              in its evolving infrastructure, economy, and social fabric
+            </p>
+            <button class="read-more-btn mt-4" onclick="toggleReadMore()">
+              Read the full history
+            </button>
+            <div id="history-text" class="read-more-content">
+              <p class="mt-4 text-gray-700">
+                Nana Effah Opinaman III has been a key figure in leading this
+                progress, championing initiatives in education, healthcare, and
+                infrastructure to improve the lives of residents and ensure a
+                sustainable future for Obomeng. Today, Obomeng stands as a
+                vibrant community, offering a unique blend of cultural heritage
+                and contemporary living. Its scenic location amidst the Kwahu
+                Ridge hills adds to its allure, attracting visitors and
+                fostering a sense of pride among its inhabitants. The ongoing
+                development efforts, combined with the preservation of its
+                cultural identity, make Obomeng a dynamic and promising
+                community within the Kwahu region.
+              </p>
+            </div>
+          </div>
+          <div>
+            <img
+              src="./chief_pics/chief_picturemain.jpg"
+              alt="Obomeng Community"
+              class="rounded-md shadow-lg"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="bg-green-100 py-10">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-semibold text-green-700 mb-6 text-center">
+          Community Projects
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="bg-white rounded-md shadow-md p-4">
+            <img
+              src="./chief_pics/astroturf_inaugurate.jpg"
+              alt="School Project"
+              class="w-full rounded-md mb-4"
+            />
+            <h3 class="text-xl font-semibold text-green-600 mb-2">
+              Obomeng Astro Turf
+            </h3>
+            <p class="text-gray-700 leading-relaxed">
+              The newly inaugurated football astro turf in Obomeng stands as a
+              testament to the community's commitment to sports development and
+              youth empowerment. This state-of-the-art facility provides a
+              modern and safe playing surface for residents, fostering local
+              talent, promoting healthy lifestyles, and serving as a vibrant hub
+              for community engagement and recreational activities. The
+              inauguration marked a significant milestone, celebrating the
+              culmination of collaborative efforts to enhance the town's
+              sporting infrastructure.
+            </p>
+          </div>
+          <div class="bg-white rounded-md shadow-md p-4">
+            <img
+              src="./chief_pics/social_center.jpg"
+              alt="Clinic Project"
+              class="w-full rounded-md mb-4"
+            />
+            <h3 class="text-xl font-semibold text-green-600 mb-2">
+              Community Social Center
+            </h3>
+            <p class="text-gray-700 leading-relaxed">
+              The Community Social Center in Obomeng serves as a crucial space
+              for residents to gather and support one another during times of
+              bereavement. This center provides a dignified and accessible venue
+              for funeral ceremonies, offering comfort and solace to grieving
+              families and facilitating important cultural traditions. Beyond
+              its primary function, the center also plays a role in other social
+              gatherings, strengthening community bonds and providing a place
+              for various communal events.
+            </p>
+          </div>
+          <div class="bg-white rounded-md shadow-md p-4">
+            <img
+              src="./chief_pics/proxy-image.jpeg"
+              alt="Infrastructure Project"
+              class="w-full rounded-md mb-4"
+            />
+            <h3 class="text-xl font-semibold text-green-600 mb-2">
+              Sungyata Eco-Village
+            </h3>
+            <p class="text-gray-700 leading-relaxed">
+              Sungyata Eco-Village is a unique destination in Obomeng, designed
+              to promote healing, wellness, and ecological awareness. This
+              village offers a serene environment for visitors to connect with
+              nature, experience traditional healing practices, and learn about
+              sustainable living. With its focus on holistic well-being and
+              community attraction, Sungyata Eco-Village not only provides a
+              space for rejuvenation but also draws in tourists, contributing to
+              the cultural and economic vitality of Obomeng.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="attractions" class="bg-gray-100 py-10">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-semibold text-green-700 mb-6 text-center">
+          Cultural Attractions & Tourism Events
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="bg-white rounded-md shadow-md overflow-hidden">
+            <img
+              src="./chief_pics/clan_new.png"
+              alt="Paragliding Festival"
+              class="w-full"
+            />
+            <div class="p-4">
+              <h3 class="text-xl font-semibold text-green-600 mb-2">
+                Clan Festival
+              </h3>
+              <p class="text-gray-700 leading-relaxed">
+                The Clan Festival in Obomeng is a vibrant cultural celebration
+                that brings together different clans within the community to
+                showcase their unique heritage, traditions, and histories. This
+                event typically features colorful processions, traditional music
+                and dance, storytelling, and the display of clan-specific
+                artifacts, fostering a strong sense of community identity and
+                pride.
+              </p>
+            </div>
+          </div>
+          <div class="bg-white rounded-md shadow-md overflow-hidden">
+            <img
+              src="./chief_pics/prayer_mountain.jpg"
+              alt="Oboadaka Falls"
+              class="w-full"
+            />
+            <div class="p-4">
+              <h3 class="text-xl font-semibold text-green-600 mb-2">
+                Prayer Mountain (Hidden View)
+              </h3>
+              <p class="text-gray-700 leading-relaxed">
+                Prayer Mountain in Obomeng offers a unique spiritual experience
+                combined with stunning natural scenery; it's a place where
+                visitors can engage in prayer and meditation while enjoying
+                panoramic views, often from a somewhat secluded or "hidden"
+                vantage point. The serene atmosphere and elevated location make
+                it ideal for reflection and connecting with nature..
+              </p>
+            </div>
+          </div>
+          <div class="bg-white rounded-md shadow-md overflow-hidden">
+            <img
+              src="./chief_pics/palacetour.jpg"
+              alt="Traditional Durbar"
+              class="w-full"
+            />
+            <div class="p-4">
+              <h3 class="text-xl font-semibold text-green-600 mb-2">
+                Palace Tour
+              </h3>
+              <p class="text-gray-700 leading-relaxed">
+                Palace tours in Obomeng provide visitors with a fascinating
+                glimpse into the traditional rule and rich history of the area,
+                centered around the local palace or chief's residence. These
+                tours offer insights into the chieftaincy system, traditional
+                governance, and the cultural significance of the palace, often
+                including a chance to view historical artifacts, ceremonial
+                spaces, and learn about the lives of past and present leaders.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section></section>
+    <section id="blog" class="bg-green-100 py-10">
+      <div class="accordion-container">
+        <div class="accordion-column">
+          <h2>Traditional Leaders</h2>
+          <button class="accordion">
+            <div class="accordion-title">
+              <span>Odeifuor Effah Opinaman |||</span>
+              <span class="accordion-icon">&#43;</span>
+            </div>
+          </button>
+          <div class="accordion-content">
+            <div class="leader-profile">
+              <img
+                src="./chief_pics/NanaEffah_Talkingtomedia.jpg"
+                alt="Nana Kwasi Mensah"
+              />
+              <p>Obomengman Chief 2016-Present</p>
+            </div>
+          </div>
+          <button class="accordion">
+            <div class="accordion-title">
+              <span>Obaahemaa Yaa Kwei II</span>
+              <span class="accordion-icon">&#43;</span>
+            </div>
+          </button>
+          <div class="accordion-content">
+            <div class="leader-profile">
+              <img
+                src="./chief_pics/queenmother_speech.jpg"
+                alt="Nana Ama Serwaa"
+              />
+              <p>Queen Mother 2024-Present.</p>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-column">
+          <h2>Community Leaders</h2>
+          <button class="accordion">
+            <div class="accordion-title">
+              <span>Eric Oware Agyapong</span>
+              <span class="accordion-icon">&#43;</span>
+            </div>
+          </button>
+          <div class="accordion-content">
+            <div class="leader-profile">
+              <img
+                src="./chief_pics/alonso.jpg"
+                alt="John Koomson"
+              />
+              <p>
+                Assembly Man 2020-present
+              </p>
+            </div>
+          </div>
+          <button class="accordion">
+            <div class="accordion-title">
+              <span>Seth Akwasi Adjei</span>
+              <span class="accordion-icon">&#43;</span>
+            </div>
+          </button>
+          <div class="accordion-content">
+            <div class="leader-profile">
+              <img
+                src="./chief_pics/setho.jpg"
+                alt="Sarah Mensah"
+              />
+              <p>Obomeng Unit Committee Chairman.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-semibold text-green-700 mb-6 text-center">
+          Palace News & Events
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="bg-white rounded-md shadow-md p-4">
+            <h3 class="text-xl font-semibold text-green-600 mb-2">
+              Chief's Address
+            </h3>
+            <p class="text-gray-700 leading-relaxed mb-4">
+              <a href="https://www.adomonline.com/kwahu-obomeng-celebrates-maiden-edition-of-clan-festival-to-promote-unity/l">
+                The Chief's address will focus on the significance of the clan
+                festival, celebrating heritage and unity</a
+              >
+            </p>
+            <img
+              src="./chief_pics/front_clan.png"
+              alt="Chief's Address"
+              class="w-full rounded-md"
+            />
+          </div>
+          <div class="bg-white rounded-md shadow-md p-4">
+            <h3 class="text-xl font-semibold text-green-600 mb-2">
+              Upcoming Events
+            </h3>
+            <p class="text-gray-700 leading-relaxed mb-4">
+              The upcoming events will feature the iconic Agwagwa Festival,
+              where the Chief will announce details for this year's celebration.
+            </p>
+            <img
+              src="./chief_pics/agwagwa.png"
+              alt="Upcoming Events"
+              class="w-full rounded-md"
+            />
+          </div>
+        </div>
+        <hr />
+        <hr />
+      </div>
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-semibold text-green-700 mb-6 text-center">
+          Obomeng Schools
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="bg-white rounded-md shadow-md p-4">
+            <h3 class="text-xl font-semibold text-green-600 mb-2">
+              Obomeng M/A School
+            </h3>
+            <p class="text-gray-700 leading-relaxed mb-4">
+              <a href="/2023/11/paragliding-festival">
+                A government-run school that also offers foundational
+                education..</a
+              >
+            </p>
+            <img
+              src="./chief_pics/ma_school.png"
+              alt="Chief's Address"
+              class="w-full rounded-md"
+            />
+          </div>
+          <div class="bg-white rounded-md shadow-md p-4">
+            <h3 class="text-xl font-semibold text-green-600 mb-2">
+              Obomeng Presby School
+            </h3>
+            <p class="text-gray-700 leading-relaxed mb-4">
+              A Presbyterian church-affiliated school that provides foundational
+              education.
+            </p>
+            <img
+              src="./chief_pics/obomeng_school.png"
+              alt="Upcoming Events"
+              class="w-full rounded-md"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="healthcare" class="bg-gray-100 py-10">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-semibold text-green-700 mb-6 text-center">
+          Healthcare
+        </h2>
+        <div class="bg-white rounded-md shadow-md p-6">
+          <h3
+            class="text-2xl font-semibold text-green-600 mb-4"
+            id="healthcare-facilities"
+          >
+            Obomeng Community Clinic
+          </h3>
+          <p class="text-gray-700 leading-relaxed mb-4">
+            Obomeng has a dedicated community clinic providing essential
+            healthcare services to residents. We are committed to the well-being
+            of our community members.
+          </p>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-6">
+            <div>
+              <h4 class="text-lg font-semibold text-green-600 mb-2">
+                Our Services Include:
+              </h4>
+              <ul class="list-disc list-inside text-gray-700">
+                <li>General Medical Services</li>
+                <li>Maternal and Child Health</li>
+                <li>Preventive Care</li>
+                <li>Emergency Services</li>
+              </ul>
+            </div>
+            <!--<div>
+              <img
+                src="./chief_pics/clinic_new.png"
+                alt="Community Clinic"
+                class="w-full rounded-md mb-4"
+              />
+            </div>-->
+          </div>
+
+          <div class="mt-8">
+            <h4 class="text-lg font-semibold text-green-600 mb-2">
+              Events and Screenings
+            </h4>
+            <div class="relative">
+              <div class="event-slide active">
+                <img
+                  src="./imgs/clinic/adult_screening.jpg"
+                  alt="Health Screening Event 1"
+                  class="w-full rounded-md"
+                />
+                <p class="text-center text-gray-700 mt-2">
+                  Free Health Screening on HPT,Diabetes & General Care- January
+                  15, 2024
+                </p>
+              </div>
+              <div class="event-slide">
+                <img
+                  src="./imgs/clinic/screening.jpg"
+                  alt="Vaccination Drive"
+                  class="w-full rounded-md"
+                />
+                <p class="text-center text-gray-700 mt-2">
+                  Regular Health Testing for Greenvile Elderly Group- April 19,
+                  2025
+                </p>
+              </div>
+              <div class="event-slide">
+                <img
+                  src="./imgs/clinic/screening_easter1.png"
+                  alt="Health Talk"
+                  class="w-full rounded-md"
+                />
+                <p class="text-center text-gray-700 mt-2">
+                  Health Talk on Diabetes - April 20, 2025
+                </p>
+              </div>
+              <a
+                class="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-70 text-gray-800 p-2 rounded-full cursor-pointer hover:bg-opacity-90"
+                onclick="plusEventSlides(-1)"
+                aria-label="Previous Slide"
+              >
+                <i class="fas fa-chevron-left"></i>
+              </a>
+              <a
+                class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-70 text-gray-800 p-2 rounded-full cursor-pointer hover:bg-opacity-90"
+                onclick="plusEventSlides(1)"
+                aria-label="Next Slide"
+              >
+                <i class="fas fa-chevron-right"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="mt-8">
+            <h4 class="text-lg font-semibold text-green-600 mb-2">
+              Clinic Building Video
+            </h4>
+            <video id="clinic-video" controls>
+              <source src="./chief_pics/clinic_video.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+            <p class="text-center text-gray-700">
+              A virtual tour of our clinic facilities.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+            <div>
+              <h5 class="text-md font-semibold text-green-600 mb-2">
+                General OPD
+              </h5>
+              <p class="text-gray-700">
+                Our welcoming and comfortable OPD area.
+              </p>
+              <img
+                src="./imgs/clinic/Gen_OPD.png"
+                alt="Reception Area"
+                class="rounded-md mt-2"
+              />
+            </div>
+            <div>
+              <h5 class="text-md font-semibold text-green-600 mb-2">
+                Consultation Room
+              </h5>
+              <p class="text-gray-700">
+                A modern consultation room for private discussions.
+              </p>
+              <img
+                src="./imgs/clinic/consulting_room.png"
+                alt="Consultation Room"
+                class="rounded-md mt-2"
+              />
+            </div>
+            <div>
+              <h5 class="text-md font-semibold text-green-600 mb-2">
+                Lay-In Ward
+              </h5>
+              <p class="text-gray-700">
+                Our Layin ward for patience who are admitted to the clinic.
+                need.
+              </p>
+              <img
+                src="./imgs/clinic/layin_ward.png"
+                alt="Pharmacy"
+                class="rounded-md mt-2"
+              />
+            </div>
+            <div>
+              <h5 class="text-md font-semibold text-green-600 mb-2">RCH</h5>
+              <p class="text-gray-700">
+                We have a conducive RCH for the natives.
+              </p>
+              <img
+                src="./imgs/clinic/RCH.png"
+                alt="Laboratory"
+                class="rounded-md mt-2"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="bg-gray-800 text-white py-6">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div>
+            <h3 class="text-xl font-semibold mb-4">Contact Us</h3>
+            <p class="text-gray-300">Obomeng Traditional Council</p>
+            <p class="text-gray-300">P.O. Box 123, Obomeng, Kwahu</p>
+            <p class="text-gray-300">Email: info@obomeng.com</p>
+            <p class="text-gray-300">Phone: +233 123 456789</p>
+          </div>
+          <div>
+            <h3 class="text-xl font-semibold mb-4">Map of Obomeng</h3>
+            <div id="map">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31644.92181515783!2d-0.7891350171139934!3d6.642858852342827!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfdb9c4c79f1b7b9%3A0x4451f110f216441d!2sObomeng!5e0!3m2!1sen!2sgh!4v1698835364985!5m2!1sen!2sgh"
+                width="100%"
+                height="300"
+                style="border: 0"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
+          </div>
+        </div>
+        <div class="text-center mt-4">
+          <p>© 2023 Obomeng Kwahu. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      /* JavaScript: Image Slider */
+      let slideIndex = 0;
+      showSlides();
+
+      function showSlides() {
+        let i;
+        let slides = document.getElementsByClassName("slide");
+        for (i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";
+        }
+        slideIndex++;
+        if (slideIndex > slides.length) {
+          slideIndex = 1;
+        }
+        slides[slideIndex - 1].style.display = "block";
+        setTimeout(showSlides, 6000);
+      }
+
+      function plusSlides(n) {
+        showSlides((slideIndex += n));
+      }
+
+      /* JavaScript: Mobile Menu */
+      const hamburgerBtn = document.getElementById("hamburger-btn");
+      const mobileMenu = document.getElementById("mobile-menu");
+      const closeMenuBtn = document.getElementById("close-menu-btn");
+      const mobileMenuLinks = mobileMenu.querySelectorAll("a");
+
+      function toggleMobileMenu() {
+        mobileMenu.classList.toggle("hidden");
+        document.body.style.overflow = mobileMenu.classList.contains("hidden")
+          ? ""
+          : "hidden";
+      }
+
+      hamburgerBtn.addEventListener("click", toggleMobileMenu);
+      closeMenuBtn.addEventListener("click", toggleMobileMenu);
+
+      mobileMenuLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+          toggleMobileMenu();
+        });
+      });
+
+      // accordion
+      const accordionButtons = document.querySelectorAll(".accordion");
+
+      accordionButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const content = button.nextElementSibling;
+          const icon = button.querySelector(".accordion-icon");
+
+          button.classList.toggle("active");
+          content.classList.toggle("show");
+          icon.classList.toggle("rotate");
+        });
+      });
+      /* JavaScript: Read More Function */
+      function toggleReadMore() {
+        const historyText = document.getElementById("history-text");
+        historyText.classList.toggle("show");
+      }
+
+      /* Event Slider */
+      let eventIndex = 0;
+      showEventSlides();
+
+      function showEventSlides() {
+        let i;
+        let eventSlides = document.getElementsByClassName("event-slide");
+        for (i = 0; i < eventSlides.length; i++) {
+          eventSlides[i].style.display = "none";
+        }
+        eventIndex++;
+        if (eventIndex > eventSlides.length) {
+          eventIndex = 1;
+        }
+        eventSlides[eventIndex - 1].style.display = "block";
+        setTimeout(showEventSlides, 5000);
+      }
+
+      function plusEventSlides(n) {
+        showEventSlides((eventIndex += n));
+      }
+    </script>
+  </body>
+</html>
