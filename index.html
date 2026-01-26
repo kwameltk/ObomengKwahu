@@ -99,6 +99,14 @@
       .event-slide.active {
         display: block;
       }
+
+      .palace-news-slide {
+        display: none;
+      }
+
+      .palace-news-slide.active {
+        display: block;
+      }
       /* Accordion container styles */
       .accordion-container {
         display: flex;
@@ -230,9 +238,9 @@
             </li>
             <li>
               <a
-                href="#blog"
+                href="blog.html"
                 class="hover:text-green-200 transition duration-300"
-                >News</a
+                >Blogs</a
               >
             </li>
             <li class="health-dropdown">
@@ -294,9 +302,9 @@
             </li>
             <li>
               <a
-                href="#blog"
+                href="blog.html"
                 class="block text-lg text-white hover:text-green-200 transition duration-300"
-                >Blog</a
+                >Blogs</a
               >
             </li>
             <li>
@@ -711,36 +719,123 @@
         <h2 class="text-3xl font-semibold text-green-700 mb-6 text-center">
           Palace News & Events
         </h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div class="bg-white rounded-md shadow-md p-4">
-            <h3 class="text-xl font-semibold text-green-600 mb-2">
-              Chief's Address
-            </h3>
-            <p class="text-gray-700 leading-relaxed mb-4">
-              <a href="https://www.adomonline.com/kwahu-obomeng-celebrates-maiden-edition-of-clan-festival-to-promote-unity/l">
-                The Chief's address will focus on the significance of the clan
-                festival, celebrating heritage and unity</a
-              >
-            </p>
-            <img
-              src="./chief_pics/front_clan.png"
-              alt="Chief's Address"
-              class="w-full rounded-md"
-            />
+        <div class="relative">
+          <div class="palace-news-slide active">
+            <div class="bg-white rounded-md shadow-md p-6">
+              <div class="flex justify-between items-start mb-4">
+                <h3 class="text-xl font-semibold text-green-600">
+                  Chief's Address
+                </h3>
+                <span class="text-sm bg-green-100 text-green-700 px-3 py-1 rounded-full">
+                  January 26, 2026
+                </span>
+              </div>
+              <p class="text-gray-700 leading-relaxed mb-4">
+                <a href="https://www.adomonline.com/kwahu-obomeng-celebrates-maiden-edition-of-clan-festival-to-promote-unity/" class="text-green-600 hover:text-green-700 font-semibold">
+                  The Chief's address will focus on the significance of the clan
+                  festival, celebrating heritage and unity
+                </a>
+              </p>
+              <img
+                src="./chief_pics/front_clan.png"
+                alt="Chief's Address"
+                class="w-full rounded-md mb-4"
+              />
+              <a href="blog.html" class="text-green-600 hover:text-green-700 font-semibold">Read more on our blog →</a>
+            </div>
           </div>
-          <div class="bg-white rounded-md shadow-md p-4">
-            <h3 class="text-xl font-semibold text-green-600 mb-2">
-              Upcoming Events
-            </h3>
-            <p class="text-gray-700 leading-relaxed mb-4">
-              The upcoming events will feature the iconic Agwagwa Festival,
-              where the Chief will announce details for this year's celebration.
-            </p>
-            <img
-              src="./chief_pics/agwagwa.png"
-              alt="Upcoming Events"
-              class="w-full rounded-md"
-            />
+
+          <div class="palace-news-slide">
+            <div class="bg-white rounded-md shadow-md p-6">
+              <div class="flex justify-between items-start mb-4">
+                <h3 class="text-xl font-semibold text-green-600">
+                  Agwagwa Festival Celebration
+                </h3>
+                <span class="text-sm bg-green-100 text-green-700 px-3 py-1 rounded-full">
+                  April 15, 2026
+                </span>
+              </div>
+              <p class="text-gray-700 leading-relaxed mb-4">
+                The upcoming Agwagwa Festival will feature the iconic harvest celebration,
+                where the Chief will announce details for this year's celebration and cultural performances.
+              </p>
+              <img
+                src="./chief_pics/agwagwa.png"
+                alt="Upcoming Events"
+                class="w-full rounded-md mb-4"
+              />
+              <a href="blog.html" class="text-green-600 hover:text-green-700 font-semibold">Read more on our blog →</a>
+            </div>
+          </div>
+
+          <div class="palace-news-slide">
+            <div class="bg-white rounded-md shadow-md p-6">
+              <div class="flex justify-between items-start mb-4">
+                <h3 class="text-xl font-semibold text-green-600">
+                  Keahu Easter Festival
+                </h3>
+                <span class="text-sm bg-green-100 text-green-700 px-3 py-1 rounded-full">
+                  April 20, 2026
+                </span>
+              </div>
+              <p class="text-gray-700 leading-relaxed mb-4">
+                Join us for the sacred Keahu Easter Festival, a celebration blending Christian faith with rich 
+                cultural traditions. Experience spiritual reflection, communal feasting, and traditional performances.
+              </p>
+              <img
+                src="./chief_pics/front_clan.png"
+                alt="Keahu Easter"
+                class="w-full rounded-md mb-4"
+              />
+              <a href="blog.html" class="text-green-600 hover:text-green-700 font-semibold">Read more on our blog →</a>
+            </div>
+          </div>
+
+          <div class="palace-news-slide">
+            <div class="bg-white rounded-md shadow-md p-6">
+              <div class="flex justify-between items-start mb-4">
+                <h3 class="text-xl font-semibold text-green-600">
+                  Community Health Initiative
+                </h3>
+                <span class="text-sm bg-green-100 text-green-700 px-3 py-1 rounded-full">
+                  February 14, 2026
+                </span>
+              </div>
+              <p class="text-gray-700 leading-relaxed mb-4">
+                The Obomeng Community Clinic is launching a comprehensive health initiative featuring free health 
+                screenings, wellness talks, and medical consultations for all residents.
+              </p>
+              <img
+                src="./chief_pics/agwagwa.png"
+                alt="Health Initiative"
+                class="w-full rounded-md mb-4"
+              />
+              <a href="blog.html" class="text-green-600 hover:text-green-700 font-semibold">Read more on our blog →</a>
+            </div>
+          </div>
+
+          <!-- Slider Navigation -->
+          <a
+            class="absolute left-2 top-1/2 transform -translate-y-1/2 bg-green-600 text-white p-2 rounded-full cursor-pointer hover:bg-green-700 transition"
+            onclick="plusPalaceSlides(-1)"
+            aria-label="Previous Event"
+          >
+            <i class="fas fa-chevron-left"></i>
+          </a>
+          <a
+            class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-green-600 text-white p-2 rounded-full cursor-pointer hover:bg-green-700 transition"
+            onclick="plusPalaceSlides(1)"
+            aria-label="Next Event"
+          >
+            <i class="fas fa-chevron-right"></i>
+          </a>
+
+          <!-- Slide Indicators -->
+          <div class="flex justify-center gap-2 mt-6">
+            <span class="palace-indicator h-2 w-2 rounded-full bg-green-600 cursor-pointer active" onclick="currentPalaceSlide(0)"></span>
+            <span class="palace-indicator h-2 w-2 rounded-full bg-gray-300 cursor-pointer" onclick="currentPalaceSlide(1)"></span>
+            <span class="palace-indicator h-2 w-2 rounded-full bg-gray-300 cursor-pointer" onclick="currentPalaceSlide(2)"></span>
+            <span class="palace-indicator h-2 w-2 rounded-full bg-gray-300 cursor-pointer" onclick="currentPalaceSlide(3)"></span>
           </div>
         </div>
         <hr />
@@ -1064,6 +1159,69 @@
       function plusEventSlides(n) {
         showEventSlides((eventIndex += n));
       }
+
+      /* Palace News & Events Slider */
+      let palaceIndex = 0;
+      showPalaceSlides();
+
+      function showPalaceSlides() {
+        let i;
+        let palaceSlides = document.getElementsByClassName("palace-news-slide");
+        for (i = 0; i < palaceSlides.length; i++) {
+          palaceSlides[i].classList.remove("active");
+        }
+        palaceIndex++;
+        if (palaceIndex > palaceSlides.length) {
+          palaceIndex = 1;
+        }
+        palaceSlides[palaceIndex - 1].classList.add("active");
+        updatePalaceIndicators();
+        setTimeout(showPalaceSlides, 6000);
+      }
+
+      function plusPalaceSlides(n) {
+        clearTimeout(palaceSlideTimer);
+        let palaceSlides = document.getElementsByClassName("palace-news-slide");
+        palaceIndex += n;
+        if (palaceIndex > palaceSlides.length) {
+          palaceIndex = 1;
+        }
+        if (palaceIndex < 1) {
+          palaceIndex = palaceSlides.length;
+        }
+        for (let i = 0; i < palaceSlides.length; i++) {
+          palaceSlides[i].classList.remove("active");
+        }
+        palaceSlides[palaceIndex - 1].classList.add("active");
+        updatePalaceIndicators();
+        palaceSlideTimer = setTimeout(showPalaceSlides, 6000);
+      }
+
+      function currentPalaceSlide(n) {
+        clearTimeout(palaceSlideTimer);
+        let palaceSlides = document.getElementsByClassName("palace-news-slide");
+        palaceIndex = n + 1;
+        for (let i = 0; i < palaceSlides.length; i++) {
+          palaceSlides[i].classList.remove("active");
+        }
+        palaceSlides[palaceIndex - 1].classList.add("active");
+        updatePalaceIndicators();
+        palaceSlideTimer = setTimeout(showPalaceSlides, 6000);
+      }
+
+      function updatePalaceIndicators() {
+        let indicators = document.getElementsByClassName("palace-indicator");
+        for (let i = 0; i < indicators.length; i++) {
+          indicators[i].classList.remove("bg-green-600", "active");
+          indicators[i].classList.add("bg-gray-300");
+        }
+        if (indicators[palaceIndex - 1]) {
+          indicators[palaceIndex - 1].classList.remove("bg-gray-300");
+          indicators[palaceIndex - 1].classList.add("bg-green-600", "active");
+        }
+      }
+
+      let palaceSlideTimer;
     </script>
   </body>
 </html>

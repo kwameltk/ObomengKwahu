@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Obomeng Blogs - Stories & Culture</title>
+    <link rel="icon" href="./chief_pics/favicon.ico" />
+    <!-- Open Graph Meta Tags for Social Sharing -->
+    <meta property="og:title" content="Obomeng Blogs - Stories & Culture" />
+    <meta property="og:description" content="Discover the rich heritage, traditions, and vibrant stories of Obomeng. Explore blogs about Keahu Easter Festival, traditional significance, the people, and cultural practices of Kwahu." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://obomeng.com/blog.html" />
+    <meta property="og:image" content="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=1200&h=630&fit=crop" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Obomeng Blogs - Stories & Culture" />
+    <meta name="twitter:description" content="Discover the rich heritage, traditions, and vibrant stories of Obomeng community." />
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=1200&h=630&fit=crop" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer-when-downgrade"
+    />
+    <style>
+      .logo {
+        display: inline-block;
+      }
+
+      .logo img {
+        width: 50px;
+        height: auto;
+        border-radius: 50px;
+      }
+
+      .blog-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        cursor: pointer;
+      }
+
+      .blog-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+      }
+
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 50;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.4);
+        overflow-y: auto;
+      }
+
+      .modal.show {
+        display: block;
+      }
+
+      .modal-content {
+        background-color: #fefefe;
+        margin: 2rem auto;
+        padding: 2rem;
+        border: 1px solid #888;
+        border-radius: 0.5rem;
+        width: 90%;
+        max-width: 800px;
+        max-height: 90vh;
+        overflow-y: auto;
+      }
+
+      .close-modal {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+
+      .close-modal:hover,
+      .close-modal:focus {
+        color: black;
+      }
+
+      .blog-title {
+        color: #15803d;
+        margin-bottom: 1rem;
+      }
+
+      .blog-meta {
+        color: #6b7280;
+        font-size: 0.875rem;
+        margin-bottom: 1rem;
+      }
+
+      .blog-content {
+        color: #374151;
+        line-height: 1.75;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-100 font-inter">
+    <header
+      class="bg-green-600 text-white py-4 shadow-md sticky top-0 z-10 rounded-md"
+    >
+      <div class="container mx-auto px-4 flex justify-between items-center">
+        <a href="index.html" class="logo">
+          <img src="./chief_pics/ojtown_logo.jpg" alt="Obomeng Kwahu Logo" />
+        </a>
+        <nav class="hidden md:block">
+          <ul class="flex space-x-6">
+            <li>
+              <a
+                href="index.html#about"
+                class="hover:text-green-200 transition duration-300"
+                >About Us</a
+              >
+            </li>
+            <li>
+              <a
+                href="index.html#projects"
+                class="hover:text-green-200 transition duration-300"
+                >Community Projects</a
+              >
+            </li>
+            <li>
+              <a
+                href="index.html#attractions"
+                class="hover:text-green-200 transition duration-300"
+                >Attractions</a
+              >
+            </li>
+            <li>
+              <a
+                href="blog.html"
+                class="hover:text-green-200 transition duration-300"
+                >Blogs</a
+              >
+            </li>
+            <li>
+              <a
+                href="index.html#healthcare"
+                class="hover:text-green-200 transition duration-300"
+                >Healthcare</a
+              >
+            </li>
+          </ul>
+        </nav>
+        <button
+          id="hamburger-btn"
+          class="md:hidden text-white focus:outline-none"
+          aria-label="Toggle Navigation"
+        >
+          <i class="fas fa-bars text-xl"></i>
+        </button>
+      </div>
+    </header>
+
+    <div
+      id="mobile-menu"
+      class="hidden fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-90 z-20"
+    >
+      <div class="bg-green-600 w-80 h-full absolute right-0 p-6">
+        <div class="flex justify-end mb-4">
+          <button
+            id="close-menu-btn"
+            class="text-white focus:outline-none"
+            aria-label="Close Menu"
+          >
+            <i class="fas fa-times text-xl"></i>
+          </button>
+        </div>
+        <nav class="block">
+          <ul class="space-y-4">
+            <li>
+              <a
+                href="index.html#about"
+                class="block text-lg text-white hover:text-green-200 transition duration-300"
+                >About Us</a
+              >
+            </li>
+            <li>
+              <a
+                href="index.html#projects"
+                class="block text-lg text-white hover:text-green-200 transition duration-300"
+                >Community Projects</a
+              >
+            </li>
+            <li>
+              <a
+                href="index.html#attractions"
+                class="block text-lg text-white hover:text-green-200 transition duration-300"
+                >Attractions</a
+              >
+            </li>
+            <li>
+              <a
+                href="blog.html"
+                class="block text-lg text-white hover:text-green-200 transition duration-300"
+                >Blogs</a
+              >
+            </li>
+            <li>
+              <a
+                href="index.html#healthcare"
+                class="block text-lg text-white hover:text-green-200 transition duration-300"
+                >Healthcare</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+
+    <main class="container mx-auto px-4 py-12">
+      <h1 class="text-4xl font-bold text-green-700 mb-2 text-center">
+        Obomeng Stories & Culture
+      </h1>
+      <p class="text-center text-gray-600 mb-12">
+        Discover the rich heritage, traditions, and vibrant stories of our community
+      </p>
+
+      <!-- Featured Image Section -->
+      <div class="mb-12 rounded-lg overflow-hidden shadow-2xl">
+        <div class="relative bg-gray-200">
+          <img 
+            src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=1200&h=400&fit=crop" 
+            alt="Obomeng Cultural Heritage - Featured Image"
+            class="w-full h-96 object-cover"
+            loading="eager"
+          />
+        </div>
+        <div class="bg-gradient-to-r from-green-600 to-green-700 text-white p-8">
+          <h2 class="text-3xl font-bold mb-3">Welcome to Obomeng's Cultural Hub</h2>
+          <p class="text-green-100 text-lg">Explore the rich stories and traditions that define our vibrant community</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+        <!-- Blog 1: Keahu Easter Festival -->
+        <div
+          class="blog-card bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer"
+          onclick="handleBlogClick('keahu', event)"
+        >
+          <img src="/imgs/astro_turf2.jpg" alt="Keahu Easter Festival" class="w-full h-48 object-cover" />
+          <div class="p-6">
+            <h2 class="text-2xl font-bold text-green-700 mb-2">
+              Keahu Easter Festival: A Sacred Celebration
+            </h2>
+            <p class="text-gray-600 mb-4">
+              Explore the spiritual significance of the Keahu Easter Festival, where tradition
+              meets faith in the heart of Obomeng.
+            </p>
+            <div class="flex justify-between items-center text-sm text-gray-500 mb-4 pb-4 border-b border-gray-200">
+              <span>📅 January 26, 2026</span>
+              <span>✍️ Obomeng Community</span>
+            </div>
+            <span class="text-green-600 font-semibold">Click to read more →</span>
+          </div>
+        </div>
+
+        <!-- Blog 2: Traditional Significance -->
+        <div
+          class="blog-card bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer"
+          onclick="handleBlogClick('significance', event)"
+        >
+          <img src="https://images.unsplash.com/photo-1549887534-f3a10b0f5e4c?w=500&h=300&fit=crop" alt="Traditional Significance" class="w-full h-48 object-cover" />
+          <div class="p-6">
+            <h2 class="text-2xl font-bold text-green-700 mb-2">
+              Traditional Significance of Obomeng
+            </h2>
+            <p class="text-gray-600 mb-4">
+              Delve into the deep-rooted traditions and cultural heritage that define Obomeng
+              as a vital center of Kwahu culture.
+            </p>
+            <div class="flex justify-between items-center text-sm text-gray-500 mb-4 pb-4 border-b border-gray-200">
+              <span>📅 January 26, 2026</span>
+              <span>✍️ Obomeng Community</span>
+            </div>
+            <span class="text-green-600 font-semibold">Click to read more →</span>
+          </div>
+        </div>
+
+        <!-- Blog 3: The People of Obomeng -->
+        <div
+          class="blog-card bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer"
+          onclick="handleBlogClick('people', event)"
+        >
+          <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=500&h=300&fit=crop" alt="The People of Obomeng" class="w-full h-48 object-cover" />
+          <div class="p-6">
+            <h2 class="text-2xl font-bold text-green-700 mb-2">
+              The People of Obomeng: Heart of Our Community
+            </h2>
+            <p class="text-gray-600 mb-4">
+              Meet the resilient, warm-hearted people who keep Obomeng's spirit alive through
+              their dedication and unity.
+            </p>
+            <div class="flex justify-between items-center text-sm text-gray-500 mb-4 pb-4 border-b border-gray-200">
+              <span>📅 January 26, 2026</span>
+              <span>✍️ Obomeng Community</span>
+            </div>
+            <span class="text-green-600 font-semibold">Click to read more →</span>
+          </div>
+        </div>
+
+        <!-- Blog 4: Cultural Practices & Festivals -->
+        <div
+          class="blog-card bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer"
+          onclick="handleBlogClick('cultural', event)"
+        >
+          <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=500&h=300&fit=crop" alt="Cultural Practices" class="w-full h-48 object-cover" />
+          <div class="p-6">
+            <h2 class="text-2xl font-bold text-green-700 mb-2">
+              Cultural Practices & Festivals of Kwahu
+            </h2>
+            <p class="text-gray-600 mb-4">
+              Celebrate with us as we showcase the vibrant festivals and cultural practices
+              that define the Kwahu people.
+            </p>
+            <div class="flex justify-between items-center text-sm text-gray-500 mb-4 pb-4 border-b border-gray-200">
+              <span>📅 January 26, 2026</span>
+              <span>✍️ Obomeng Community</span>
+            </div>
+            <span class="text-green-600 font-semibold">Click to read more →</span>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Modal for Blog 1: Keahu Easter Festival -->
+    <div id="keahuModal" class="modal">
+      <div class="modal-content">
+        <span class="close-modal" onclick="closeBlogModal('keahu')">&times;</span>
+        <h2 class="blog-title text-3xl font-bold">Keahu Easter Festival: A Sacred Celebration</h2>
+        <div class="blog-meta">
+          <span>Published on January 26, 2026</span> | <span>By Obomeng Community</span>
+        </div>
+        <div class="blog-content">
+          <img src="https://images.unsplash.com/photo-1518621736697-46d59cfb37a8?w=600&h=300&fit=crop" alt="Easter celebration" class="w-full rounded-lg mb-6" />
+          
+          <p class="mb-4">
+            The Keahu Easter Festival stands as one of the most significant religious and cultural
+            celebrations in Obomeng. This sacred observance brings together the entire community
+            to commemorate the resurrection of Jesus Christ while honoring the deep spiritual roots
+            that bind the Obomeng people together.
+          </p>
+
+          <h3 class="text-xl font-bold text-green-700 mt-6 mb-3">Spiritual Significance</h3>
+          <p class="mb-4">
+            For the Christian community in Obomeng, Easter represents the ultimate symbol of hope,
+            redemption, and renewal. The Keahu Easter Festival blends this Christian faith with
+            the rich cultural traditions of the Kwahu people. It serves as a time for spiritual
+            reflection, family unity, and gratitude for blessings received throughout the year.
+          </p>
+          <p class="mb-4">
+            The week-long celebration includes church services, prayer vigils, and community
+            gatherings where residents dress in their finest traditional and modern attire to
+            celebrate together. The festival reminds every member of the Obomeng community of their
+            shared faith and cultural identity.
+          </p>
+
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=300&fit=crop" alt="Community gathering" class="w-full rounded-lg mb-6 my-4" />
+
+          <h3 class="text-xl font-bold text-green-700 mt-6 mb-3">Traditional Observances</h3>
+          <p class="mb-4">
+            The Keahu Festival incorporates traditional Kwahu customs such as communal feasting,
+            drumming, and storytelling. Families prepare special meals featuring local dishes,
+            and young people perform traditional dances that have been passed down through
+            generations. These customs ensure that the festival remains a true reflection of
+            Obomeng's cultural identity.
+          </p>
+
+          <h3 class="text-xl font-bold text-green-700 mt-6 mb-3">Community Unity</h3>
+          <p class="mb-4">
+            Beyond its religious significance, the Keahu Easter Festival strengthens the bonds
+            that hold the Obomeng community together. It is a time when families reunite, friends
+            reconnect, and neighbors celebrate as one large extended family. The festival provides
+            an opportunity for the youth to learn about their heritage and for elders to pass down
+            the traditions to the next generation.
+          </p>
+
+          <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&h=300&fit=crop" alt="Cultural celebration" class="w-full rounded-lg mb-6" />
+
+          <p class="mt-6">
+            Today, the Keahu Easter Festival continues to be a beacon of hope and unity in Obomeng,
+            drawing people from near and far to witness and participate in this magnificent
+            celebration of faith, culture, and community.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal for Blog 2: Traditional Significance -->
+    <div id="significanceModal" class="modal">
+      <div class="modal-content">
+        <span class="close-modal" onclick="closeBlogModal('significance')">&times;</span>
+        <h2 class="blog-title text-3xl font-bold">Traditional Significance of Obomeng</h2>
+        <div class="blog-meta">
+          <span>Published on January 26, 2026</span> | <span>By Obomeng Community</span>
+        </div>
+        <div class="blog-content">
+          <img src="https://images.unsplash.com/photo-1549887534-f3a10b0f5e4c?w=600&h=300&fit=crop" alt="Traditional chief" class="w-full rounded-lg mb-6" />
+          
+          <p class="mb-4">
+            Obomeng stands as a cornerstone of Kwahu traditional governance and cultural
+            preservation. With a rich history spanning generations, this community has maintained
+            its cultural identity while adapting to the modern world. The traditional significance
+            of Obomeng lies in its role as a center for chieftaincy, spirituality, and communal
+            values.
+          </p>
+
+          <h3 class="text-xl font-bold text-green-700 mt-6 mb-3">Chieftaincy and Governance</h3>
+          <p class="mb-4">
+            Obomeng is home to the Obomengman stool, one of the most revered traditional seats
+            in Kwahu. The Chief serves not only as a political leader but as a custodian of
+            traditions and a spiritual guide for the community. The chieftaincy institution in
+            Obomeng has successfully bridged the gap between traditional governance and modern
+            administration, ensuring that ancient wisdom continues to guide contemporary decisions.
+          </p>
+          <p class="mb-4">
+            The traditional council in Obomeng comprises elders and community leaders who serve as
+            advisors to the Chief. This council system reflects the democratic principles that have
+            been part of Kwahu governance for centuries, where decisions are made collectively for
+            the common good.
+          </p>
+
+          <img src="https://images.unsplash.com/photo-150784272343-583f20270319?w=600&h=300&fit=crop" alt="Historical landmarks" class="w-full rounded-lg mb-6 my-4" />
+
+          <h3 class="text-xl font-bold text-green-700 mt-6 mb-3">Spiritual and Cultural Center</h3>
+          <p class="mb-4">
+            Beyond political governance, Obomeng serves as a spiritual and cultural center for the
+            Kwahu people. The town is home to sacred sites, ancestral shrines, and historical
+            landmarks that hold deep meaning for the community. These places serve as reminders of
+            the connection between the living and the ancestors who came before us.
+          </p>
+
+          <h3 class="text-xl font-bold text-green-700 mt-6 mb-3">Preservation of Heritage</h3>
+          <p class="mb-4">
+            In an era of rapid globalization, Obomeng has taken deliberate steps to preserve and
+            celebrate its cultural heritage. Through festivals, educational initiatives, and
+            community programs, Obomeng ensures that the youth learn about their roots and
+            understand the significance of their traditions.
+          </p>
+          <p class="mb-4">
+            The traditional significant of Obomeng extends beyond geographical boundaries. It
+            represents a living museum of Kwahu culture, where history is not merely studied but
+            lived and breathed by every community member.
+          </p>
+
+          <img src="https://images.unsplash.com/photo-1491438639033-606e8acc8b5d?w=600&h=300&fit=crop" alt="Cultural heritage" class="w-full rounded-lg mb-6" />
+
+          <p class="mt-6">
+            As Obomeng continues to grow and develop, its commitment to maintaining traditional
+            values remains unwavering, making it an inspiration to other communities seeking to
+            balance progress with cultural preservation.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal for Blog 3: The People of Obomeng -->
+    <div id="peopleModal" class="modal">
+      <div class="modal-content">
+        <span class="close-modal" onclick="closeBlogModal('people')">&times;</span>
+        <h2 class="blog-title text-3xl font-bold">The People of Obomeng: Heart of Our Community</h2>
+        <div class="blog-meta">
+          <span>Published on January 26, 2026</span> | <span>By Obomeng Community</span>
+        </div>
+        <div class="blog-content">
+          <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&h=300&fit=crop" alt="Community members" class="w-full rounded-lg mb-6" />
+          
+          <p class="mb-4">
+            The true wealth of Obomeng lies not in its land or resources, but in its people. The
+            residents of Obomeng are known throughout Kwahu for their warmth, resilience, and
+            unwavering commitment to their community. These are people who have built a thriving
+            society based on mutual respect, shared values, and collective progress.
+          </p>
+
+          <h3 class="text-xl font-bold text-green-700 mt-6 mb-3">A Diverse and United Community</h3>
+          <p class="mb-4">
+            Obomeng is home to people from various walks of life—farmers, traders, professionals,
+            educators, and healthcare workers. Despite their different occupations and backgrounds,
+            the people of Obomeng share a common purpose: to build a better future for their
+            families and community. This diversity strengthens the community, bringing different
+            perspectives and skills to collective endeavors.
+          </p>
+
+          <img src="https://images.unsplash.com/photo-1517457373614-b7152f800fd1?w=600&h=300&fit=crop" alt="Community unity" class="w-full rounded-lg mb-6 my-4" />
+
+          <h3 class="text-xl font-bold text-green-700 mt-6 mb-3">Values and Character</h3>
+          <p class="mb-4">
+            The people of Obomeng are characterized by several enduring values. They believe in the
+            power of community, where the success of one is celebrated by all, and the challenges
+            of one are shouldered by the entire group. They value hard work, respect for elders,
+            education, and spiritual growth.
+          </p>
+          <p class="mb-4">
+            Hospitality is another hallmark of Obomeng people. Visitors to the community are
+            welcomed with genuine warmth and treated as family members. This spirit of generosity
+            and kindness reflects the deep-rooted humaneness that defines the Obomeng character.
+          </p>
+
+          <h3 class="text-xl font-bold text-green-700 mt-6 mb-3">Commitment to Education and Progress</h3>
+          <p class="mb-4">
+            The people of Obomeng have consistently demonstrated their commitment to education,
+            viewing it as the pathway to personal and community development. The presence of both
+            government and private schools in Obomeng is a testament to this value. Parents make
+            significant sacrifices to ensure their children receive quality education.
+          </p>
+
+          <h3 class="text-xl font-bold text-green-700 mt-6 mb-3">Community Projects and Service</h3>
+          <p class="mb-4">
+            From maintaining community facilities to organizing health programs and educational
+            initiatives, the people of Obomeng consistently demonstrate their commitment to
+            collective progress. Community projects such as the renovation of the Chief's Palace,
+            the construction of healthcare facilities, and the establishment of educational programs
+            showcase the community's ability to work together toward shared goals.
+          </p>
+
+          <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=300&fit=crop" alt="Community projects" class="w-full rounded-lg mb-6" />
+
+          <p class="mt-6">
+            The people of Obomeng are the true custodians of their community's future. Through
+            their dedication, resilience, and collective spirit, they continue to write the story
+            of Obomeng—a story of hope, progress, and cultural pride.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal for Blog 4: Cultural Practices & Festivals -->
+    <div id="culturalModal" class="modal">
+      <div class="modal-content">
+        <span class="close-modal" onclick="closeBlogModal('cultural')">&times;</span>
+        <h2 class="blog-title text-3xl font-bold">Cultural Practices & Festivals of Kwahu</h2>
+        <div class="blog-meta">
+          <span>Published on January 26, 2026</span> | <span>By Obomeng Community</span>
+        </div>
+        <div class="blog-content">
+          <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=600&h=300&fit=crop" alt="Cultural festival" class="w-full rounded-lg mb-6" />
+          
+          <p class="mb-4">
+            The Kwahu people, with Obomeng as a cultural hub, are renowned throughout Ghana for
+            their vibrant festivals and rich cultural practices. These celebrations are more than
+            mere entertainment; they are expressions of identity, spirituality, and communal bonds
+            that have been strengthened over centuries.
+          </p>
+
+          <h3 class="text-xl font-bold text-green-700 mt-6 mb-3">Agwagwa Festival</h3>
+          <p class="mb-4">
+            The Agwagwa Festival is one of the most iconic celebrations in Kwahu, and Obomeng
+            plays a central role in its observance. This festival celebrates the harvest season
+            and pays homage to the ancestors who have guided and protected the community. During
+            Agwagwa, the streets of Obomeng come alive with colorful processions, traditional
+            music, and dancers dressed in elaborate traditional garments.
+          </p>
+          <p class="mb-4">
+            The festival serves as a time for the Chief to address the community, share blessings
+            of the past year, and inspire the people for the future. Traditional rites are
+            performed, and the community shares in communal feasts that reinforce bonds of unity
+            and brotherhood.
+          </p>
+
+          <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600&h=300&fit=crop" alt="Traditional music and dance" class="w-full rounded-lg mb-6 my-4" />
+
+          <h3 class="text-xl font-bold text-green-700 mt-6 mb-3">Traditional Arts and Crafts</h3>
+          <p class="mb-4">
+            The people of Obomeng and Kwahu are skilled artisans who create beautiful traditional
+            crafts. From hand-woven textiles to carved wooden sculptures, these crafts tell stories
+            of heritage and skill passed down through generations. Local markets in Obomeng showcase
+            these treasures, attracting visitors and preserving traditional knowledge.
+          </p>
+
+          <h3 class="text-xl font-bold text-green-700 mt-6 mb-3">Traditional Music and Dance</h3>
+          <p class="mb-4">
+            Music and dance are integral to Kwahu cultural identity. Traditional drums such as the
+            talking drum, fontomfrom, and gong are used to communicate, celebrate, and mark
+            important occasions. Dance forms like the adowa and traditional highlife are performed
+            at festivals and celebrations, bringing communities together in rhythmic harmony.
+          </p>
+          <p class="mb-4">
+            Young people in Obomeng are trained in these traditional art forms, ensuring that the
+            knowledge continues to thrive. Cultural troupes from Obomeng have performed at regional
+            and national events, bringing pride to their community.
+          </p>
+
+          <h3 class="text-xl font-bold text-green-700 mt-6 mb-3">Storytelling and Oral Traditions</h3>
+          <p class="mb-4">
+            In the evenings, elders gather young people to share stories of the past—tales of
+            brave ancestors, wise leaders, and important lessons for living. These oral traditions
+            are crucial for maintaining cultural memory and passing on values to younger generations.
+          </p>
+
+          <h3 class="text-xl font-bold text-green-700 mt-6 mb-3">Respect for Elders and Ancestors</h3>
+          <p class="mb-4">
+            Central to Kwahu culture is the profound respect for elders and ancestors. Rites of
+            passage, naming ceremonies, and funeral celebrations all reflect the importance of
+            honoring those who came before. These practices ensure continuity and maintain the
+            spiritual connection between generations.
+          </p>
+
+          <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=600&h=300&fit=crop" alt="Traditional gathering" class="w-full rounded-lg mb-6" />
+
+          <p class="mt-6">
+            The cultural practices and festivals of Kwahu, as celebrated in Obomeng, represent a
+            living heritage that continues to evolve while remaining rooted in tradition. These
+            celebrations are invitations for all—both natives and visitors—to experience the warmth,
+            vibrancy, and pride of the Kwahu people.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <footer class="bg-gray-800 text-white py-6 mt-12">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div>
+            <h3 class="text-xl font-semibold mb-4">Contact Us</h3>
+            <p class="text-gray-300">Obomeng Traditional Council</p>
+            <p class="text-gray-300">P.O. Box 475, Obomeng, Kwahu</p>
+            <p class="text-gray-300">Email: obomengpalace@gmail.com</p>
+            <p class="text-gray-300">Phone: +233 243746530</p>
+          </div>
+          <div>
+            <h3 class="text-xl font-semibold mb-4">Quick Links</h3>
+            <ul class="text-gray-300 space-y-2">
+              <li>
+                <a href="index.html" class="hover:text-green-200">Home</a>
+              </li>
+              <li>
+                <a href="index.html#about" class="hover:text-green-200">About Us</a>
+              </li>
+              <li>
+                <a href="blog.html" class="hover:text-green-200">Blogs</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="text-center mt-4">
+          <p>© 2023 Obomeng Kwahu. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Mobile Menu
+      const hamburgerBtn = document.getElementById("hamburger-btn");
+      const mobileMenu = document.getElementById("mobile-menu");
+      const closeMenuBtn = document.getElementById("close-menu-btn");
+      const mobileMenuLinks = mobileMenu.querySelectorAll("a");
+
+      function toggleMobileMenu() {
+        mobileMenu.classList.toggle("hidden");
+        document.body.style.overflow = mobileMenu.classList.contains("hidden")
+          ? ""
+          : "hidden";
+      }
+
+      hamburgerBtn.addEventListener("click", toggleMobileMenu);
+      closeMenuBtn.addEventListener("click", toggleMobileMenu);
+
+      mobileMenuLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+          toggleMobileMenu();
+        });
+      });
+
+      // Blog Modal Functions
+      function openBlogModal(blogId) {
+        const modalId = blogId + "Modal";
+        const modal = document.getElementById(modalId);
+        if (modal) {
+          modal.classList.add("show");
+          document.body.style.overflow = "hidden";
+        }
+      }
+
+      function closeBlogModal(blogId) {
+        const modalId = blogId + "Modal";
+        const modal = document.getElementById(modalId);
+        if (modal) {
+          modal.classList.remove("show");
+          document.body.style.overflow = "";
+        }
+      }
+
+      // Handle blog click - responsive behavior
+      function handleBlogClick(blogId, event) {
+        event.preventDefault();
+        
+        // Check if on mobile view (less than 768px)
+        if (window.innerWidth < 768) {
+          // Navigate to modal page for mobile
+          window.location.href = `blog-modal.html?id=${blogId}`;
+        } else {
+          // Open inline modal for desktop
+          openBlogModal(blogId);
+        }
+      }
+
+      // Close modal when clicking outside of it
+      window.addEventListener("click", function (event) {
+        if (event.target.classList.contains("modal")) {
+          event.target.classList.remove("show");
+          document.body.style.overflow = "";
+        }
+      });
+    </script>
+  </body>
+</html>
