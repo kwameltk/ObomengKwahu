@@ -79,10 +79,38 @@
         border-radius: 0.25rem;
       }
 
+
       .health-dropdown-content a:hover {
         background-color: #e5e7eb;
         color: #15803d;
       }
+
+      /* Improved dropdown styling for About Us */
+      .nav-dropdown { position: relative; }
+      .nav-dropdown .submenu {
+        position: absolute;
+        left: 0;
+        top: 100%;
+        background: white;
+        color: #334155;
+        min-width: 200px;
+        border-radius: 0.375rem;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+        padding: 0.25rem 0;
+        z-index: 50;
+        opacity: 0;
+        transform: translateY(6px);
+        transition: opacity 160ms ease, transform 160ms ease;
+        pointer-events: none;
+      }
+      .nav-dropdown.open .submenu,
+      .nav-dropdown:hover .submenu {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+      }
+      .nav-dropdown .submenu a { display:block; padding:0.5rem 1rem; color:inherit; }
+      .nav-dropdown .submenu a:hover { background:#f8fafc; }
 
       #clinic-video {
         width: 100%;
@@ -214,13 +242,13 @@
           <img src="./chief_pics/ojtown_logo.jpg" alt="Obomeng Kwahu Logo" />
         </a>
         <nav class="hidden md:block">
-          <ul class="flex space-x-6">
-            <li>
-              <a
-                href="#about"
-                class="hover:text-green-200 transition duration-300"
-                >About Us</a
-              >
+          <ul class="flex space-x-6 items-center">
+            <li class="nav-dropdown">
+              <a href="#about" class="hover:text-green-200 transition duration-300">About Us</a>
+              <div class="submenu hidden md:block">
+                <a href="#about" class="block px-4 py-2 hover:bg-gray-100">Overview</a>
+                <a href="healthcare.html" class="block px-4 py-2 hover:bg-gray-100">Healthcare</a>
+              </div>
             </li>
             <li>
               <a
@@ -243,14 +271,10 @@
                 >Blogs</a
               >
             </li>
-            <li class="health-dropdown">
-              <a href="#" class="hover:text-green-200 transition duration-300"
-                >Healthcare</a
-              >
-              <div class="health-dropdown-content">
-                <a href="#healthcare-facilities">Health Facility</a>
-              </div>
+            <li>
+              <a href="donate.html" class="bg-yellow-500 text-gray-900 px-3 py-1 rounded-md font-semibold hover:bg-yellow-400 transition">Donate</a>
             </li>
+            
           </ul>
         </nav>
         <button
@@ -280,11 +304,11 @@
         <nav class="block">
           <ul class="space-y-4">
             <li>
-              <a
-                href="#about"
-                class="block text-lg text-white hover:text-green-200 transition duration-300"
-                >About Us</a
-              >
+              <span class="block text-lg text-white font-semibold">About Us</span>
+              <ul class="pl-4 mt-2 space-y-2">
+                <li><a href="#about" class="block text-white hover:text-green-200">Overview</a></li>
+                <li><a href="healthcare.html" class="block text-white hover:text-green-200">Healthcare</a></li>
+              </ul>
             </li>
             <li>
               <a
@@ -308,12 +332,9 @@
               >
             </li>
             <li>
-              <a
-                href="#healthcare-facilities"
-                class="block text-lg text-white hover:text-green-200 transition duration-300"
-                >Healthcare</a
-              >
+              <a href="donate.html" class="block text-lg text-white hover:text-yellow-200 transition duration-300">Donate</a>
             </li>
+            
           </ul>
         </nav>
       </div>
@@ -1052,8 +1073,21 @@
             <p class="text-gray-300">P.O. Box 475, Obomeng, Kwahu</p>
             <p class="text-gray-300">Email: obomengpalace@gmail.com</p>
             <p class="text-gray-300">Phone: +233 243746530</p>
+            <div class="mt-4 flex items-center space-x-3">
+              <a href="https://facebook.com/" target="_blank" rel="noopener" class="text-white hover:text-blue-400">
+                <i class="fab fa-facebook fa-2x"></i>
+              </a>
+              <a href="https://youtube.com/" target="_blank" rel="noopener" class="text-white hover:text-red-400">
+                <i class="fab fa-youtube fa-2x"></i>
+              </a>
+            </div>
           </div>
           <div>
+            <h3 class="text-xl font-semibold mb-4">Subscribe</h3>
+            <form id="subscribe-form" class="flex gap-2 mb-4" onsubmit="event.preventDefault(); alert('Thanks — replace with Mailchimp action');">
+              <input type="email" name="email" required placeholder="Your email" class="px-3 py-2 rounded-md text-gray-800" />
+              <button class="bg-green-600 px-4 py-2 rounded-md font-semibold">Subscribe</button>
+            </form>
             <h3 class="text-xl font-semibold mb-4">Map of Obomeng</h3>
             <div id="map">
               <iframe
@@ -1222,6 +1256,61 @@
       }
 
       let palaceSlideTimer;
+    </script>
+    <script>
+      // Keep About Us submenu stable while moving pointer
+      (function(){
+        document.addEventListener('DOMContentLoaded', function(){
+          document.querySelectorAll('.nav-dropdown').forEach(function(el){
+            let timer;
+            el.addEventListener('mouseenter', function(){ clearTimeout(timer); el.classList.add('open'); });
+            el.addEventListener('mouseleave', function(){ timer = setTimeout(function(){ el.classList.remove('open'); }, 180); });
+            // also ensure submenu stays when focused via keyboard
+            el.querySelectorAll('a').forEach(a=>{ a.addEventListener('focus', ()=>el.classList.add('open')); a.addEventListener('blur', ()=>{ timer = setTimeout(()=>el.classList.remove('open'),180); }); });
+          });
+        });
+      })();
+    </script>
+    <!-- Sticky Donate CTA -->
+    <a href="donate.html" class="fixed right-4 bottom-20 bg-yellow-500 text-gray-900 px-4 py-3 rounded-full shadow-lg z-50 hover:bg-yellow-400 transition" aria-label="Donate">Donate</a>
+
+    <!-- Back to top -->
+    <button id="back-to-top" class="hidden fixed right-4 bottom-4 bg-green-600 text-white p-3 rounded-full shadow-lg z-50">↑</button>
+
+    <!-- Lazy-load images and small utilities -->
+    <script>
+      // make images lazy by default
+      document.addEventListener('DOMContentLoaded', function(){
+        document.querySelectorAll('img').forEach(img=>{ if(!img.hasAttribute('loading')) img.setAttribute('loading','lazy'); });
+        const btt = document.getElementById('back-to-top');
+        window.addEventListener('scroll', ()=>{ if(window.scrollY>300) btt.classList.remove('hidden'); else btt.classList.add('hidden'); });
+        btt.addEventListener('click', ()=>window.scrollTo({top:0,behavior:'smooth'}));
+      });
+    </script>
+
+    <!-- JSON-LD Organization -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Obomeng Kwahu",
+        "url": "https://obomeng.com",
+        "logo": "https://obomeng.com/chief_pics/favicon.ico",
+        "sameAs": ["https://facebook.com/","https://youtube.com/"]
+      }
+    </script>
+
+    <!-- Tawk.to Live Chat (replace YOUR_PROPERTY_ID) -->
+    <script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+      var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+      s1.async=true;
+      s1.src='https://embed.tawk.to/YOUR_PROPERTY_ID/default';
+      s1.charset='UTF-8';
+      s1.setAttribute('crossorigin','*');
+      s0.parentNode.insertBefore(s1,s0);
+    })();
     </script>
   </body>
 </html>

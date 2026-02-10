@@ -108,6 +108,16 @@
         line-height: 1.75;
       }
     </style>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Obomeng Kwahu",
+        "url": "https://obomeng.com",
+        "logo": "https://obomeng.com/chief_pics/favicon.ico",
+        "sameAs": ["https://facebook.com/","https://youtube.com/"]
+      }
+    </script>
   </head>
   <body class="bg-gray-100 font-inter">
     <header
@@ -119,12 +129,12 @@
         </a>
         <nav class="hidden md:block">
           <ul class="flex space-x-6">
-            <li>
-              <a
-                href="index.html#about"
-                class="hover:text-green-200 transition duration-300"
-                >About Us</a
-              >
+            <li class="nav-dropdown">
+              <a href="index.html#about" class="hover:text-green-200 transition duration-300">About Us</a>
+              <div class="submenu hidden md:block">
+                <a href="index.html#about" class="block px-4 py-2 hover:bg-gray-100">Overview</a>
+                <a href="healthcare.html" class="block px-4 py-2 hover:bg-gray-100">Healthcare</a>
+              </div>
             </li>
             <li>
               <a
@@ -146,6 +156,9 @@
                 class="hover:text-green-200 transition duration-300"
                 >Blogs</a
               >
+            </li>
+            <li>
+              <a href="donate.html" class="bg-yellow-500 text-gray-900 px-3 py-1 rounded-md font-semibold hover:bg-yellow-400 transition">Donate</a>
             </li>
             <li>
               <a
@@ -183,11 +196,11 @@
         <nav class="block">
           <ul class="space-y-4">
             <li>
-              <a
-                href="index.html#about"
-                class="block text-lg text-white hover:text-green-200 transition duration-300"
-                >About Us</a
-              >
+              <span class="block text-lg text-white font-semibold">About Us</span>
+              <ul class="pl-4 mt-2 space-y-2">
+                <li><a href="index.html#about" class="block text-white hover:text-green-200">Overview</a></li>
+                <li><a href="healthcare.html" class="block text-white hover:text-green-200">Healthcare</a></li>
+              </ul>
             </li>
             <li>
               <a
@@ -209,6 +222,9 @@
                 class="block text-lg text-white hover:text-green-200 transition duration-300"
                 >Blogs</a
               >
+            </li>
+            <li>
+              <a href="donate.html" class="block text-lg text-white hover:text-yellow-200 transition duration-300">Donate</a>
             </li>
             <li>
               <a
@@ -652,6 +668,29 @@
       </div>
     </footer>
 
+    <!-- Sticky Donate CTA -->
+    <a href="donate.html" class="fixed right-4 bottom-20 bg-yellow-500 text-gray-900 px-4 py-3 rounded-full shadow-lg z-50 hover:bg-yellow-400 transition" aria-label="Donate">Donate</a>
+
+    <!-- Lazy-load images and back-to-top -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function(){
+        document.querySelectorAll('img').forEach(img=>{ if(!img.hasAttribute('loading')) img.setAttribute('loading','lazy'); });
+      });
+    </script>
+
+    <!-- Tawk.to Live Chat (replace YOUR_PROPERTY_ID) -->
+    <script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+      var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+      s1.async=true;
+      s1.src='https://embed.tawk.to/YOUR_PROPERTY_ID/default';
+      s1.charset='UTF-8';
+      s1.setAttribute('crossorigin','*');
+      s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
+
     <script>
       // Mobile Menu
       const hamburgerBtn = document.getElementById("hamburger-btn");
@@ -715,6 +754,18 @@
           document.body.style.overflow = "";
         }
       });
-    </script>
+      </script>
+      <script>
+        // Stable About Us submenu on desktop
+        document.addEventListener('DOMContentLoaded', function(){
+          document.querySelectorAll('.nav-dropdown').forEach(function(el){
+            let timer;
+            el.addEventListener('mouseenter', function(){ clearTimeout(timer); el.classList.add('open'); });
+            el.addEventListener('mouseleave', function(){ timer = setTimeout(function(){ el.classList.remove('open'); }, 180); });
+            // keyboard accessibility
+            el.querySelectorAll('a').forEach(a=>{ a.addEventListener('focus', ()=>el.classList.add('open')); a.addEventListener('blur', ()=>{ timer = setTimeout(()=>el.classList.remove('open'),180); }); });
+          });
+        });
+      </script>
   </body>
 </html>
